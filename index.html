@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ببخشید رایا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Noto+Nastaliq+Urdu&family=Vazirmatn:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: one RTL letter column — loud gradient hero, taped sticky-note confessions, two meters, a stamped pledge, gift + reply — over drifting emoji */
+:root {
+  --bg: #FFF1F5;
+  --ink: #2A1636;
+  --muted: #6D5878;
+  --line: rgba(42, 22, 54, .12);
+  --card: rgba(255, 255, 255, .78);
+  --shadow: rgba(60, 20, 70, .35);
+  --pink: #EC3F78;
+  --mango: #F59E0B;
+  --mint: #12A983;
+  --sky: #3B7BF0;
+  --grape: #7C4DFF;
+  --note-1: #FFD3E2;
+  --note-2: #FFE6AE;
+  --note-3: #C6F2E3;
+  --note-4: #D7E5FF;
+  --note-ink: #2A1636;
+  --tape: rgba(255, 255, 255, .62);
+  --on-accent: #FFFFFF;
+  --font-display: "Lalezar", "Vazirmatn", Tahoma, system-ui, sans-serif;
+  --font-body: "Vazirmatn", Tahoma, system-ui, sans-serif;
+  --font-poem: "Noto Nastaliq Urdu", "Vazirmatn", Tahoma, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #170D22;
+    --ink: #FBEFFA;
+    --muted: #C7B3D3;
+    --line: rgba(255, 255, 255, .12);
+    --card: rgba(255, 255, 255, .06);
+    --shadow: rgba(0, 0, 0, .6);
+    --pink: #FF6B9E;
+    --mango: #FFC24D;
+    --mint: #3EE0B5;
+    --sky: #74ABFF;
+    --grape: #A98BFF;
+    --note-1: #F6B9CF;
+    --note-2: #F3D58E;
+    --note-3: #A6E6D1;
+    --note-4: #B8CFFA;
+    --tape: rgba(255, 255, 255, .42);
+    --on-accent: #170D22;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #170D22;
+  --ink: #FBEFFA;
+  --muted: #C7B3D3;
+  --line: rgba(255, 255, 255, .12);
+  --card: rgba(255, 255, 255, .06);
+  --shadow: rgba(0, 0, 0, .6);
+  --pink: #FF6B9E;
+  --mango: #FFC24D;
+  --mint: #3EE0B5;
+  --sky: #74ABFF;
+  --grape: #A98BFF;
+  --note-1: #F6B9CF;
+  --note-2: #F3D58E;
+  --note-3: #A6E6D1;
+  --note-4: #B8CFFA;
+  --tape: rgba(255, 255, 255, .42);
+  --on-accent: #170D22;
+  color-scheme: dark;
+}
+
+html { background: var(--bg); }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(42rem 30rem at 100% 0%, color-mix(in srgb, var(--pink) 20%, transparent), transparent 70%),
+    radial-gradient(36rem 28rem at 0% 28%, color-mix(in srgb, var(--sky) 15%, transparent), transparent 70%),
+    radial-gradient(40rem 30rem at 100% 70%, color-mix(in srgb, var(--mango) 17%, transparent), transparent 70%),
+    radial-gradient(36rem 30rem at 0% 100%, color-mix(in srgb, var(--mint) 15%, transparent), transparent 70%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.95;
+  direction: rtl;
+  overflow-x: clip;
+}
+button { font-family: inherit; }
+
+#sky, #fx {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#sky { z-index: 0; }
+#fx { z-index: 5; }
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 880px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 56px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 76px;
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 36px;
+  align-items: center;
+}
+.hero-text { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.eyebrow {
+  margin: 0;
+  align-self: flex-start;
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--pink);
+  background: color-mix(in srgb, var(--pink) 12%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--pink) 30%, transparent);
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3.3rem, 11vw, 6.6rem);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.grad {
+  display: inline-block;
+  max-width: 100%;
+  padding-block: .04em .14em;
+  color: var(--pink);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .grad {
+    background: linear-gradient(100deg, var(--pink), var(--mango) 28%, var(--mint) 52%, var(--sky) 74%, var(--grape) 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 7s ease-in-out infinite alternate;
+  }
+}
+.lead {
+  margin: 0;
+  max-width: 34em;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-wrap: pretty;
+}
+
+.hero-face {
+  position: relative;
+  width: clamp(140px, 26vw, 210px);
+  max-width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+.hero-face::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(var(--pink), var(--mango), var(--mint), var(--sky), var(--grape), var(--pink));
+  animation: spin 12s linear infinite;
+}
+.hero-face::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  background: var(--bg);
+}
+.face {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(66px, 13vw, 108px);
+  line-height: 1;
+  animation: wobble 3s ease-in-out infinite;
+}
+.mini {
+  position: absolute;
+  z-index: 2;
+  font-size: clamp(22px, 4vw, 30px);
+  line-height: 1;
+  animation: float 4s ease-in-out infinite;
+}
+.m1 { top: -4%; right: 2%; }
+.m2 { bottom: 0; left: -4%; animation-delay: -1.3s; }
+.m3 { top: 12%; left: -6%; animation-delay: -2.6s; }
+
+/* Sections */
+.block { display: flex; flex-direction: column; gap: 22px; }
+.block-head { display: flex; flex-direction: column; gap: 2px; }
+h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.1rem, 6vw, 2.9rem);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+.mark {
+  padding-inline: .12em;
+  background: linear-gradient(transparent 58%, color-mix(in srgb, var(--c) 32%, transparent) 58%, color-mix(in srgb, var(--c) 32%, transparent) 90%, transparent 90%);
+}
+.e { display: inline-block; animation: bob 2.6s ease-in-out infinite; }
+.sub { margin: 0; color: var(--muted); text-wrap: pretty; }
+
+/* Sticky notes */
+.notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px 22px;
+  padding-top: 8px;
+}
+.note {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 30px 22px 24px;
+  border-radius: 4px 4px 4px 22px;
+  background: var(--n);
+  color: var(--note-ink);
+  box-shadow: 0 14px 26px -16px var(--shadow);
+  transform: rotate(var(--r));
+  transition: transform .25s ease;
+}
+.note::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 86px;
+  height: 24px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: var(--tape);
+  border: 1px solid var(--line);
+}
+.note:hover { transform: rotate(0deg) translateY(-4px); }
+.note p { margin: 0; font-weight: 500; text-wrap: pretty; }
+.note-emoji { flex: none; font-size: 2rem; line-height: 1.2; }
+.n1 { --n: var(--note-1); --r: -2deg; }
+.n2 { --n: var(--note-2); --r: 1.6deg; }
+.n3 { --n: var(--note-3); --r: 1.2deg; }
+.n4 { --n: var(--note-4); --r: -1.4deg; }
+
+/* Meters */
+.meters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.meter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 20px 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.meter-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-weight: 700;
+}
+.meter-head b {
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2.3rem;
+  line-height: 1.2;
+  color: var(--m);
+}
+.meter.over { --m: var(--pink); }
+.meter.zero { --m: var(--mint); }
+.track {
+  position: relative;
+  height: 18px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 9%, transparent);
+}
+.track i {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  border-radius: inherit;
+  background-color: var(--pink);
+  background-image: linear-gradient(45deg,
+    color-mix(in srgb, var(--mango) 70%, transparent) 25%, transparent 25%,
+    transparent 50%, color-mix(in srgb, var(--mango) 70%, transparent) 50%,
+    color-mix(in srgb, var(--mango) 70%, transparent) 75%, transparent 75%);
+  background-size: 28px 28px;
+  animation: stripes 1s linear infinite, grow 1.3s cubic-bezier(.2, .8, .2, 1);
+}
+.over .track::after {
+  content: "💥";
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  font-size: 1.7rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  animation: pop 1.4s ease-in-out infinite;
+}
+.zero .track::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: var(--mint);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--mint) 25%, transparent);
+}
+.meter-note { margin: 0; color: var(--muted); font-size: .95rem; }
+
+/* Pledge */
+.pledge-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px clamp(20px, 4vw, 40px) 34px;
+  background: var(--card);
+  border: 2px dashed color-mix(in srgb, var(--grape) 45%, transparent);
+  border-radius: 28px;
+}
+.promises {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.promises li { display: flex; gap: 14px; align-items: flex-start; }
+.promises p { margin: 0; min-width: 0; text-wrap: pretty; }
+.tick {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  margin-top: 2px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--t);
+  color: var(--on-accent);
+  font-weight: 800;
+  line-height: 1;
+}
+.promises li:nth-child(1) { --t: var(--mint); }
+.promises li:nth-child(2) { --t: var(--sky); }
+.promises li:nth-child(3) { --t: var(--grape); }
+.promises li:nth-child(4) { --t: var(--pink); }
+.stamp {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  width: 104px;
+  height: 104px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border: 5px double var(--pink);
+  border-radius: 50%;
+  color: var(--pink);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.25;
+  opacity: .9;
+  transform: rotate(-14deg);
+  animation: stampIn .55s cubic-bezier(.3, 1.6, .5, 1) .6s both;
+}
+
+/* Gift */
+.gift-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--mango), var(--pink));
+  color: var(--on-accent);
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 14px 28px -14px var(--pink);
+  transition: transform .15s ease;
+}
+.gift-btn:hover { transform: translateY(-2px) scale(1.02); }
+.gift-btn .box { font-size: 1.7rem; line-height: 1; animation: shake 2.6s ease-in-out infinite; }
+.gift-inside { display: flex; flex-wrap: wrap; gap: 12px; }
+.gift-inside span {
+  padding: 8px 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-weight: 600;
+  animation: rise .45s ease both;
+}
+.gift-inside span:nth-child(2) { animation-delay: .12s; }
+.gift-inside span:nth-child(3) { animation-delay: .24s; }
+
+/* Reply */
+.choices { display: flex; flex-wrap: wrap; gap: 12px; }
+.choice {
+  padding: 12px 22px;
+  border: 2px solid var(--c);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--c) 12%, var(--card));
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.6;
+  cursor: pointer;
+  transition: transform .15s ease, background-color .2s ease;
+}
+.choice:hover { transform: translateY(-2px); }
+.choice[aria-pressed="true"] { background: var(--c); color: var(--on-accent); }
+.c1 { --c: var(--pink); }
+.c2 { --c: var(--sky); }
+.c3 { --c: var(--grape); }
+.answer {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  background: color-mix(in srgb, var(--c, var(--pink)) 14%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--c, var(--pink)) 40%, transparent);
+  border-radius: 18px;
+  font-weight: 600;
+  animation: rise .35s ease both;
+}
+.answer small { color: var(--muted); font-size: .9rem; font-weight: 400; }
+
+.gift-btn:focus-visible, .choice:focus-visible {
+  outline: 3px solid var(--grape);
+  outline-offset: 3px;
+}
+
+/* Sign-off */
+.signoff {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 34px;
+  border-top: 2px dashed var(--line);
+}
+.poem {
+  margin: 0 0 10px;
+  font-family: var(--font-poem);
+  font-size: clamp(1.45rem, 4.4vw, 2.05rem);
+  line-height: 2.5;
+  color: var(--grape);
+  text-wrap: balance;
+}
+.sig { margin: 0; text-align: end; font-weight: 700; font-size: 1.1rem; }
+.date { margin: 0; text-align: end; color: var(--muted); font-size: .9rem; }
+
+@keyframes shimmer { to { background-position: 100% 0; } }
+@keyframes spin { to { transform: rotate(1turn); } }
+@keyframes wobble { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg) scale(1.05); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-4px) rotate(-8deg); } }
+@keyframes stripes { to { background-position: 28px 0; } }
+@keyframes grow { from { width: 0; } }
+@keyframes pop { 0%, 100% { transform: translateY(-50%) scale(1); } 50% { transform: translateY(-50%) scale(1.25) rotate(10deg); } }
+@keyframes shake { 0%, 78%, 100% { transform: rotate(0); } 82% { transform: rotate(-12deg); } 86% { transform: rotate(10deg); } 90% { transform: rotate(-8deg); } 94% { transform: rotate(6deg); } }
+@keyframes stampIn { from { opacity: 0; transform: rotate(-14deg) scale(1.8); } to { opacity: .9; transform: rotate(-14deg) scale(1); } }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+  .page { gap: 60px; padding-block: 36px 64px; }
+  .hero { grid-template-columns: 1fr; gap: 20px; }
+  .hero-face { order: -1; justify-self: start; }
+  .notes, .meters { grid-template-columns: 1fr; }
+  .stamp { width: 84px; height: 84px; font-size: 1.1rem; top: 14px; left: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<main class="page" dir="rtl" lang="fa">
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">💌 یه نامهٔ کوچیک، فقط برای رایا</p>
+      <h1><span class="grad">رایا، ببخشید</span></h1>
+      <p class="lead">امروز زیادی اصرار کردم. شاید هم یه جاهایی از حدم گذشتم و خودم متوجه نشدم. یه «ببخشید» خشک و خالی برای این کم بود، برای همین این صفحه رو برات ساختم.</p>
+    </div>
+    <div class="hero-face" aria-hidden="true">
+      <span class="face">🥺</span>
+      <span class="mini m1">🌸</span>
+      <span class="mini m2">✨</span>
+      <span class="mini m3">💛</span>
+    </div>
+  </header>
+
+  <section class="block" style="--c: var(--mango)">
+    <div class="block-head">
+      <h2><span class="mark">اعتراف‌نامه</span> <span class="e">📝</span></h2>
+      <p class="sub">چیزهایی که بعد از امروز فهمیدم</p>
+    </div>
+    <div class="notes">
+      <article class="note n1">
+        <span class="note-emoji" aria-hidden="true">🙈</span>
+        <p>زیادی اصرار کردم. وقتی یه بار جوابتو دادی، باید همون‌جا قبول می‌کردم.</p>
+      </article>
+      <article class="note n2">
+        <span class="note-emoji" aria-hidden="true">🌀</span>
+        <p>نمی‌دونم دقیقاً کجا از حد گذشتم. ولی همین که مطمئن نیستم، یعنی باید خیلی بیشتر حواسمو جمع می‌کردم.</p>
+      </article>
+      <article class="note n3">
+        <span class="note-emoji" aria-hidden="true">👂</span>
+        <p>ممکنه حس کرده باشی حرفت شنیده نمیشه. حقت نبود همچین حسی داشته باشی.</p>
+      </article>
+      <article class="note n4">
+        <span class="note-emoji" aria-hidden="true">🫣</span>
+        <p>قصدم اذیت کردنت نبود. ولی وقتی اذیت شدی، قصد من دیگه مهم نیست؛ مهم حال توئه.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" style="--c: var(--pink)">
+    <div class="block-head">
+      <h2><span class="mark">شرمندگی‌سنج</span> <span class="e">📊</span></h2>
+      <p class="sub">دو تا عدد که امروز برام مهمن</p>
+    </div>
+    <div class="meters">
+      <div class="meter over">
+        <div class="meter-head"><span>میزان شرمندگی امروز</span><b>۱۴۷٪</b></div>
+        <div class="track"><i style="--w: 100%"></i></div>
+        <p class="meter-note">عقربه از ته زده بیرون 😅</p>
+      </div>
+      <div class="meter zero">
+        <div class="meter-head"><span>میزان اصرار از این به بعد</span><b>۰٪</b></div>
+        <div class="track"><i style="--w: 0%"></i></div>
+        <p class="meter-note">صفرِ صفر. قول 🤞</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="--c: var(--grape)">
+    <div class="pledge-card">
+      <h2><span class="mark">قول‌هام</span> <span class="e">🤞</span></h2>
+      <ul class="promises">
+        <li><span class="tick" aria-hidden="true">✓</span><p><b>«نه» یعنی «نه».</b> همون بار اول، بدون چونه زدن.</p></li>
+        <li><span class="tick" aria-hidden="true">✓</span><p>اگه چیزی ناراحتت کرد، بهم بگو. گوش میدم و دنبال توجیه نمی‌گردم.</p></li>
+        <li><span class="tick" aria-hidden="true">✓</span><p>اگه خواستی یه مدت کمتر حرف بزنیم یا فاصله بگیری، کاملاً حق داری.</p></li>
+        <li><span class="tick" aria-hidden="true">✓</span><p>قبل از اینکه چیزی ازت بخوام، اول حال و حوصله‌تو می‌پرسم.</p></li>
+      </ul>
+      <div class="stamp" aria-hidden="true">قول<br>قطعی</div>
+    </div>
+  </section>
+
+  <section class="block" style="--c: var(--mint)">
+    <div class="block-head">
+      <h2><span class="mark">یه چیز کوچیک برات</span> <span class="e">🎁</span></h2>
+      <p class="sub">هیچ شرطی هم نداره 🙂</p>
+    </div>
+    <button class="gift-btn" id="giftBtn" type="button" aria-expanded="false" aria-controls="giftInside">
+      <span class="box" aria-hidden="true">🎁</span>
+      <span id="giftLabel">بازش کن</span>
+    </button>
+    <div class="gift-inside" id="giftInside" hidden>
+      <span>🫂 یه بغل مجازی</span>
+      <span>🌷 یه شاخه گل</span>
+      <span>☕ یه قهوه مهمون من، هر وقت خودت خواستی</span>
+    </div>
+  </section>
+
+  <section class="block" style="--c: var(--sky)">
+    <div class="block-head">
+      <h2><span class="mark">حالا نوبت توئه</span> <span class="e">💬</span></h2>
+      <p class="sub">عجله‌ای نیست. دکمه‌ها هم فرار نمی‌کنن؛ قرار شد دیگه اصرار نکنم 😄</p>
+    </div>
+    <div class="choices" role="group" aria-label="جواب رایا">
+      <button type="button" class="choice c1" id="replyForgive" data-reply="forgive" aria-pressed="false">بخشیدمت 💛</button>
+      <button type="button" class="choice c2" id="replyUpset" data-reply="upset" aria-pressed="false">هنوز یه کم دلخورم 🌧️</button>
+      <button type="button" class="choice c3" id="replyLater" data-reply="later" aria-pressed="false">بعداً حرف می‌زنیم ⏳</button>
+    </div>
+    <p class="answer" id="answer" aria-live="polite" hidden>
+      <span id="answerText"></span>
+      <small>اگه خواستی، از همین جواب اسکرین‌شات بگیر و برام بفرست 📸</small>
+    </p>
+  </section>
+
+  <footer class="signoff">
+    <p class="poem">دلم نمی‌خواست ناراحتت کنم؛ فقط بلد نبودم کِی بس کنم.</p>
+    <p class="sig">با کلی شرمندگی و احترام 💐</p>
+    <p class="date">۱۳ آبان ۱۴۰۵</p>
+  </footer>
+</main>
+
+<script>
+(() => {
+  document.documentElement.lang = 'fa';
+  document.documentElement.dir = 'rtl';
+
+  const EMOJI_FONT = '"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';
+  const AMBIENT = ['🌸', '💛', '✨', '🫶', '🌈', '🍓', '💜', '🌷', '🩷', '⭐'];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const sky = document.getElementById('sky');
+  const fx = document.getElementById('fx');
+  const skyCtx = sky.getContext('2d');
+  const fxCtx = fx.getContext('2d');
+  let W = 0, H = 0, drifters = [], sparks = [], rafId = 0;
+
+  const pick = (list) => list[Math.floor(Math.random() * list.length)];
+
+  function fit(canvas, ctx) {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+  }
+
+  function respawn(d, anywhere) {
+    d.x = Math.random() * W;
+    d.y = anywhere ? Math.random() * H : H + 40;
+    d.s = 14 + Math.random() * 18;
+    d.v = 0.2 + Math.random() * 0.45;
+    d.t = Math.random() * Math.PI * 2;
+    d.a = 0.18 + Math.random() * 0.3;
+    d.e = pick(AMBIENT);
+    return d;
+  }
+
+  function resize() {
+    const widthChanged = window.innerWidth !== W;
+    W = window.innerWidth;
+    H = window.innerHeight;
+    fit(sky, skyCtx);
+    fit(fx, fxCtx);
+    if (widthChanged) {
+      const n = Math.max(8, Math.min(26, Math.round(W * H / 45000)));
+      drifters = Array.from({ length: n }, () => respawn({}, true));
+    }
+    if (reduce.matches) drawStill();
+  }
+
+  function drawDrifter(d) {
+    skyCtx.globalAlpha = d.a;
+    skyCtx.font = `${d.s}px ${EMOJI_FONT}`;
+    skyCtx.fillText(d.e, d.x + Math.sin(d.t) * 16, d.y);
+  }
+
+  function drawStill() {
+    skyCtx.clearRect(0, 0, W, H);
+    drifters.forEach(drawDrifter);
+    skyCtx.globalAlpha = 1;
+    fxCtx.clearRect(0, 0, W, H);
+  }
+
+  function tick() {
+    skyCtx.clearRect(0, 0, W, H);
+    for (const d of drifters) {
+      d.y -= d.v;
+      d.t += 0.012;
+      if (d.y < -40) respawn(d, false);
+      drawDrifter(d);
+    }
+    skyCtx.globalAlpha = 1;
+
+    fxCtx.clearRect(0, 0, W, H);
+    sparks = sparks.filter((p) => p.life < p.max);
+    for (const p of sparks) {
+      p.life++;
+      p.vy += 0.17;
+      p.vx *= 0.99;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.r += p.vr;
+      fxCtx.globalAlpha = Math.max(0, 1 - p.life / p.max);
+      fxCtx.save();
+      fxCtx.translate(p.x, p.y);
+      fxCtx.rotate(p.r);
+      fxCtx.font = `${p.s}px ${EMOJI_FONT}`;
+      fxCtx.fillText(p.e, 0, 0);
+      fxCtx.restore();
+    }
+    fxCtx.globalAlpha = 1;
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function burst(el, set) {
+    if (reduce.matches) return;
+    const r = el.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    for (let i = 0; i < 36; i++) {
+      const ang = Math.random() * Math.PI * 2;
+      const sp = 3 + Math.random() * 6;
+      sparks.push({
+        x: cx, y: cy,
+        vx: Math.cos(ang) * sp,
+        vy: Math.sin(ang) * sp - 4,
+        s: 18 + Math.random() * 16,
+        e: set[i % set.length],
+        r: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 0.2,
+        life: 0,
+        max: 80 + Math.random() * 40,
+      });
+    }
+  }
+
+  function start() {
+    cancelAnimationFrame(rafId);
+    sparks = [];
+    if (reduce.matches) drawStill();
+    else tick();
+  }
+
+  window.addEventListener('resize', resize);
+  reduce.addEventListener?.('change', start);
+  resize();
+  start();
+
+  // Gift
+  const giftBtn = document.getElementById('giftBtn');
+  const giftInside = document.getElementById('giftInside');
+  const giftLabel = document.getElementById('giftLabel');
+  giftBtn.addEventListener('click', () => {
+    giftInside.hidden = false;
+    giftBtn.setAttribute('aria-expanded', 'true');
+    giftLabel.textContent = 'باز شد! 💝';
+    burst(giftBtn, ['🌷', '🫂', '☕', '💛', '✨']);
+  });
+
+  // Reply
+  const ANSWERS = {
+    forgive: {
+      text: 'مرسی رایا 🌈 قدرشو می‌دونم و حواسم هست دیگه تکرار نشه.',
+      color: 'var(--pink)',
+      sparks: ['💛', '🩷', '💜', '🌈', '✨'],
+    },
+    upset: {
+      text: 'حق داری 🤍 هر وقت خواستی درباره‌ش حرف بزنیم، من گوشم. هر وقت هم نخواستی، اونم اوکیه.',
+      color: 'var(--sky)',
+    },
+    later: {
+      text: 'باشه 🙂 هر وقت آماده بودی. بدون اصرار منتظر می‌مونم.',
+      color: 'var(--grape)',
+    },
+  };
+  const answer = document.getElementById('answer');
+  const answerText = document.getElementById('answerText');
+  const choices = document.querySelectorAll('.choice');
+  choices.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const a = ANSWERS[btn.dataset.reply];
+      choices.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      answerText.textContent = a.text;
+      answer.style.setProperty('--c', a.color);
+      answer.hidden = false;
+      if (a.sparks) burst(btn, a.sparks);
+    });
+  });
+})();
+</script>
+</body>
+</html>
